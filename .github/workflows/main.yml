@@ -1,0 +1,14 @@
+name: CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Publish to Astronomer.io
+      uses: elgohr/Publish-Docker-Github-Action@2.6
+      with:
+        name: earthbound-system-4567/airflow:ci-${{ github.sha }}
+        username: _
+        password: dab6f8b5235035ff78e54dc3dfe19f56
+        registry: registry.staging.astronomer.io
